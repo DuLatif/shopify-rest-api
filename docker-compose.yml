@@ -1,0 +1,31 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: shopify-rest-api
+    container_name: shopify-rest-api
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    networks:
+      - shopify-net
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+
+  db:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: shopify
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    networks:
+      - shopify-net
+
+networks:
+  shopify-net:
+    driver: bridge
