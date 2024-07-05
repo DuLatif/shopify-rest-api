@@ -20,4 +20,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Define the command to run the app
-CMD ["node", "dist/main"]
+CMD ["node", "--max-old-space-size=200", "dist/main"]
