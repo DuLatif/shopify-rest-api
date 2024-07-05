@@ -12,10 +12,13 @@ services:
     #   - shopify-net
     volumes:
       - /usr/src/app/node_modules
-    #   - .:/usr/src/app
+      # NOTE: jangan pernah save code di volume
+      # perubahan codemu tidak akan pernah berubah di container
+      # - .:/usr/src/app
     depends_on:
       - mongodb
 
+  # service name sama container name usahakan sama, biar nggk pusing
   mongodb:
     image: mongo:latest
     container_name: mongodb
@@ -28,6 +31,8 @@ services:
     # networks:
     #   - shopify-net
 
+# NOTE: network aku matikan, bisa jadi setupnya salah, sementara pakai global network
+# case network untuk level security
 # networks:
 #   shopify-net:
 #     driver: bridge

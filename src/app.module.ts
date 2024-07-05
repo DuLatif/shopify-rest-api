@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
+    // jangan pakai localhost, gunakan nama container di docker kalau sama2 di docker
     MongooseModule.forRoot('mongodb://shopify:secret@mongodb:27017/admin'),
   ],
   controllers: [AppController],
