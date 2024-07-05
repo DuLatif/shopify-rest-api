@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://shopify:secret@localhost:27017/shopify'),
+    MongooseModule.forRoot('mongodb://shopify:secret@mongodb:27017/admin'),
   ],
   controllers: [AppController],
   providers: [AppService],
